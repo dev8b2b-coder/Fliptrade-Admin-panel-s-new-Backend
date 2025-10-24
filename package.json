@@ -1,0 +1,15 @@
+{
+    "type": "module",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.3",
+        "express": "^5.1.0",
+        "handlebars": "^4.7.8",
+        "nodemailer": "^7.0.10",
+        "nodemon": "^3.1.10"
+    },
+    "scripts": {
+        "email:server": "nodemon express-server.js",
+        "start": "vite preview"
+    }
+}

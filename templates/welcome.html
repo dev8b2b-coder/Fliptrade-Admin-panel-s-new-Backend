@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to {{brandName}}</title>
+    <style>
+      body { margin:0; padding:0; background:#f3f6f9; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:#2b2b2b; }
+      a { text-decoration:none; }
+      .wrapper { width:100%; background:#f3f6f9; padding:24px 12px; }
+      .card { max-width:640px; margin:0 auto; background:#ffffff; border-radius:10px; box-shadow:0 6px 18px rgba(20,36,74,.08); overflow:hidden; }
+      .header { background:#e9f2ff; padding:0; text-align:center; }
+      .hero { position:relative; background:#00b3a4; height:70px; }
+      .content { padding:28px 28px 8px; }
+      h1 { font-size:24px; margin:0 0 10px; color:#1a1f36; }
+      p { margin:0 0 14px; line-height:1.55; color:#394150; }
+      .sep { height:1px; background:#e6eaf2; margin:18px 0; }
+      .list { margin:0; padding:0; list-style:none; }
+      .row { display:flex; padding:10px 0; gap:10px; }
+      .label { width:160px; color:#6b7280; font-weight:600; }
+      .value { color:#1f2937; word-break:break-all; }
+      .btn-wrap { padding:8px 28px 28px; }
+      .btn { display:inline-block; padding:12px 22px; border-radius:8px; background:#22c55e; color:#fff; font-weight:700; text-align:center; }
+      .footer { padding:22px 28px 30px; color:#6b7280; font-size:13px; }
+      .questions { margin-top:6px; }
+      .support a { color:#2563eb; }
+      @media (prefers-color-scheme: dark) {
+        body { background:#0f172a; color:#e5e7eb; }
+        .wrapper { background:#0f172a; }
+        .card { background:#111827; box-shadow:none; }
+        .header { background:#0b1220; }
+        h1 { color:#e5e7eb; }
+        .hero { background:#065f46; }
+        .sep { background:#1f2937; }
+        .label { color:#9ca3af; }
+        .value { color:#e5e7eb; }
+        .footer { color:#9ca3af; }
+      }
+      /* Fallback for clients that ignore flex (Outlook) */
+      @media only screen and (max-width: 480px) {
+        .row { display:block; }
+        .label { width:auto; margin-bottom:4px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="card">
+        <!-- Bulletproof header with logo -->
+        <div class="header">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
+            <tr>
+              <td align="center" style="padding:18px 24px;">
+                <!-- White chip keeps logo readable on colored/dark backgrounds -->
+                <div style="display:inline-block;background:#080808;border-radius:8px;padding:6px 10px;">
+                  <!-- Set BOTH width & height attributes + inline size to avoid distortion -->
+                  <img
+                    src="cid:fliptrade-logo"
+                    alt="{{brandName}}"
+                    width="160" height="40"
+                    style="display:block;border:0;outline:none;text-decoration:none;height:40px;width:auto;max-width:240px;"
+                  />
+                </div>
+               
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="hero"></div>
+
+        <div class="content">
+          <h1>Welcome to {{brandName}}!</h1>
+          <p>Hi {{name}},</p>
+          <p>You’re all set to start using your {{brandName}} account.</p>
+
+          <div class="sep"></div>
+
+          <p><strong>Here’s your login information:</strong></p>
+          <ul class="list">
+            {{#if customUrl}}
+            <li class="row">
+              <div class="label">Custom URL</div>
+              <div class="value"><a href="{{customUrl}}">{{customUrl}}</a></div>
+            </li>
+            {{/if}}
+            <li class="row">
+              <div class="label">Email</div>
+              <div class="value">{{email}}</div>
+            </li>
+            <li class="row">
+              <div class="label">Temporary Password</div>
+              <div class="value"><strong>{{password}}</strong></div>
+            </li>
+          </ul>
+
+          <div class="sep"></div>
+          <p>For security, please change your password after your first login.</p>
+        </div>
+
+        <div class="btn-wrap">
+          <a href="{{loginUrl}}" class="btn" target="_blank" rel="noopener">Log In Now</a>
+        </div>
+
+        <div class="footer">
+          <div>Thanks for choosing {{brandName}}.<br>— The {{brandName}} Team</div>
+          <div class="questions">
+            Questions? <span class="support">Reply to this email or contact <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>.</span>
+          </div>
+          <div style="margin-top:8px;">{{companyName}} • {{companyAddress}}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

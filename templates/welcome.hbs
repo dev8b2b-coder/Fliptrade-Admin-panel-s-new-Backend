@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Fliptrade Group</title>
+<style>
+  body {
+    margin: 0;
+    background-color: #f1f3f6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+
+  .email-wrapper {
+    width: 100%;
+    padding: 40px 0;
+    background-color: #f1f3f6;
+  }
+
+  .email-container {
+    max-width: 620px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .header {
+    background-color: #0b0f1a;
+    text-align: center;
+    padding: 35px 20px;
+  }
+
+  .header img {
+    width: 200px;
+    height: auto;
+    background-color: #0b0f1a;
+  }
+
+  .content {
+    padding: 35px 45px;
+    color: #333;
+  }
+
+  .content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #0b0f1a;
+  }
+
+  .content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .login-details {
+    background-color: #fafafa;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25px 0;
+  }
+
+  .login-details p {
+    font-size: 15px;
+    margin: 8px 0;
+  }
+
+  .login-details strong {
+    color: #000;
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .footer {
+    text-align: center;
+    background-color: #fafafa;
+    border-top: 1px solid #e6e6e6;
+    padding: 25px;
+    font-size: 13px;
+    color: #777;
+  }
+
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  /* Optional: Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #0b0f1a;
+    }
+    .email-container {
+      background-color: #1a1d26;
+      border: 1px solid #333;
+    }
+    .content, .footer {
+      color: #ddd;
+    }
+    .content h1 {
+      color: #fff;
+    }
+    .login-details {
+      background-color: #222630;
+      border-color: #444;
+    }
+    .footer {
+      background-color: #11141c;
+      border-color: #222;
+    }
+    .header img {
+      background-color: #0b0f1a;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="email-wrapper">
+  <div class="email-container">
+    
+    <!-- Header -->
+    <div class="header">
+      <img src="https://www.fliptradegroup.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.b7c8d1a7.webp&w=3840&q=75" alt="Fliptrade Logo">
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Welcome to Fliptrade Group!</h1>
+      <p>Hi <strong>{{name}}</strong>,</p>
+      <p>Your staff account has been successfully created. You can now log in to the Fliptrade Admin Panel to start managing your tasks, track activities, and collaborate with your team.</p>
+
+      <div class="login-details">
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Temporary Password:</strong> {{password}}</p>
+      </div>
+
+      <a href="https://admin.fliptradegroup.com" class="btn">Log In to Dashboard</a>
+
+      <p style="margin-top:25px;">For security reasons, please change your password immediately after your first login.</p>
+
+      <p>We’re excited to have you on board!<br>– The Fliptrade Group Team</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Need help? Contact us at <a href="mailto:support@fliptradegroup.com">support@fliptradegroup.com</a> or call +41 2650 06818</p>
+      <p>© 2025 Fliptrade Group. All rights reserved.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
