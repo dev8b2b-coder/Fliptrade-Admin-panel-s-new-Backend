@@ -6,7 +6,8 @@ import fs from 'fs';
 import path from 'path';
 dotenv.config();
 import handlebars from "handlebars";
-
+import forgetPasswordRoutes from './routes/forgetPassword.js';
+import forgetOtpMailSendingRoutes from "./routes/forgetOtpMailSending.js"
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -23,6 +24,9 @@ const transporter = nodemailer.createTransport({
   },
   tls: { minVersion: 'TLSv1.2' },
 });
+
+app.use('/v1', forgetPasswordRoutes);
+app.use('/v1',forgetOtpMailSendingRoutes);
 app.get("/",(req,res)=>{res.send("hi")})
 
 const templateFile = path.join(process.cwd(), "templates", "welcome.hbs");
