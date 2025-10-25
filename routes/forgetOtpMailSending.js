@@ -49,22 +49,58 @@ router.post('/otp/request/resend', async (req, res) => {
     if (insertErr) return res.status(500).json({ error: insertErr.message });
 
     // Email
-    const html = `
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6">
-        <h2>Your One-Time Password</h2>
-        <p>Use this OTP. It expires in <b>1 minute</b>.</p>
-        <p style="font-size:24px;font-weight:bold;letter-spacing:3px">${code}</p>
-        <p>If you didn’t request this, you can ignore this email.</p>
-      </div>
-    `;
+    // const html = `
+    //   <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6">
+    //     <h2>Your One-Time Password</h2>
+    //     <p>Use this OTP. It expires in <b>1 minute</b>.</p>
+    //     <p style="font-size:24px;font-weight:bold;letter-spacing:3px">${code}</p>
+    //     <p>If you didn’t request this, you can ignore this email.</p>
+    //   </div>
+    // `;
         // console.log("opt",code,email,"email");
         
+        function resolveLogoPath() {
+          const base = path.join(process.cwd(), "templates", "assets");
+          const candidates = ["Logo.webp", "Logo.png", "Logo.jpg", "Logo.jpeg", "Logo.webg"]; // last is in case your file really is .webg
+          for (const name of candidates) {
+            const p = path.join(base, name);
+            if (fs.existsSync(p)) return p;
+          }
+          return null;
+        }
+
+        const templateFile = path.join(process.cwd(), "templates", "forgetPassword.hbs");
+        const templateSource = fs.readFileSync(templateFile, "utf8");
+        const forgetPassword = handlebars.compile(templateSource);
+
+        const data = {
+          brandName: "Fliptrade",
+          email:email,
+          otp:code,
+          customUrl: process.env.APP_CUSTOM_URL || "",     // optional
+          loginUrl: process.env.APP_LOGIN_URL || "https://admin.fliptradegroup.com//login",
+          supportEmail: process.env.SUPPORT_EMAIL || "support@fliptrade.com",
+          companyName: "",
+          companyAddress: ""
+        };
+        const html = forgetPassword(data);
+        const logoPath = resolveLogoPath();
+    const attachments = [];
+    if (logoPath) {
+      attachments.push({
+        filename: path.basename(logoPath),
+        path: logoPath,
+        cid: "fliptrade-logo" // must match the CID used in the HTML <img src="cid:fliptrade-logo">
+      });
+    }
+
 
     await transporter.sendMail({
       from: process.env.MAIL_FROM || process.env.SMTP_USER,
       to: email,
       subject: `Your forget password is OTP`,
-      html
+      html,
+      attachments
     });
 
     res.json({ ok: true, message: 'OTP sent' });
