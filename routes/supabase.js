@@ -11,4 +11,7 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY // or SERVICE_ROLE key on server only
 );
 
+// console.log(supabase);
+
+
 export default supabase;
